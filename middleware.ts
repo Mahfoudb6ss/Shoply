@@ -6,7 +6,8 @@ const API_ADMIN_PREFIXES = [
   "/api/products",
   "/api/orders",
   "/api/categories",
-  "/api/upload"
+  "/api/upload",
+  "/api/admin"
 ];
 
 export async function middleware(request: NextRequest) {
@@ -43,7 +44,8 @@ export const config = {
     "/api/products/:path*",
     "/api/orders/:path*",
     "/api/categories/:path*",
-    "/api/upload/:path*"
+    "/api/upload/:path*",
+    "/api/admin/:path*"
   ]
 };
 

@@ -10,7 +10,8 @@ const adminNav = [
   { title: "Orders", href: "/(admin)/orders" },
   { title: "Customers", href: "/(admin)/customers" },
   { title: "Categories", href: "/(admin)/categories" },
-  { title: "Analytics", href: "/(admin)/analytics" }
+  { title: "Analytics", href: "/(admin)/analytics" },
+  { title: "Users", href: "/(admin)/users" }
 ];
 
 export const AdminShell = ({ children }: { children: React.ReactNode }) => {
