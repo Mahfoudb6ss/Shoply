@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactCompiler: true,
+  typedRoutes: true,
   experimental: {
-    reactCompiler: true,
     serverActions: {
       allowedOrigins: ["https://shoply.vercel.app", "http://localhost:3000"]
-    },
-    typedRoutes: true
+    }
   },
   images: {
     remotePatterns: [
