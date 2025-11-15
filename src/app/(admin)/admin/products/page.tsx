@@ -11,8 +11,12 @@ export const metadata: Metadata = seo({
 
 export default async function AdminProductsPage() {
   const client = supabaseServer();
-  const { data } = await client.from("products").select("*");
-  const products = (data ?? demoProducts) as typeof demoProducts;
-  return <ProductManager products={products} />;
+  const [{ data: productData }, { data: categoryData }] = await Promise.all([
+    client.from("products").select("*"),
+    client.from("categories").select("id,name")
+  ]);
+  const products = (productData ?? demoProducts) as typeof demoProducts;
+  const categories = categoryData ?? [];
+  return <ProductManager products={products} categories={categories} />;
 }
 
