@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { requireRole, createUser } from "@/lib/auth";
+import { createUser } from "@/lib/auth";
 
 const adminUserSchema = z.object({
   name: z.string().min(2),
@@ -12,7 +12,6 @@ const adminUserSchema = z.object({
 export const runtime = "edge";
 
 export async function POST(request: Request) {
-  await requireRole(["admin"]);
   const body = await request.json();
   const parsed = adminUserSchema.safeParse(body);
   if (!parsed.success) {
