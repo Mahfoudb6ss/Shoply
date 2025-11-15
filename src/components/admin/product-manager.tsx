@@ -209,7 +209,10 @@ export const ProductManager = ({ products, categories }: ProductManagerProps) =>
                         return data?.data?.url as string | undefined;
                       })
                     );
-                    setImages(prev => [...prev, ...uploaded.filter(Boolean)]);
+                    const validUrls = uploaded.filter(
+                      (url): url is string => typeof url === "string" && url.length > 0
+                    );
+                    setImages(prev => [...prev, ...validUrls]);
                   }}
                 />
                 {images.length > 0 && (
