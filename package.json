@@ -10,8 +10,7 @@
     "lint": "eslint --ext .ts,.tsx src",
     "format": "prettier --write \"src/**/*.{ts,tsx,md}\"",
     "prepare": "husky install",
-    "typecheck": "tsc --noEmit",
-    "postinstall": "prisma generate"
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
