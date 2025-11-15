@@ -5,6 +5,8 @@ import { StoreSearch } from "@/components/store/search-input";
 import { supabaseServer } from "@/lib/supabase";
 import type { Metadata } from "next";
 import { seo } from "@/utils/seo";
+import { Suspense } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = seo({
   title: "Search",
@@ -32,7 +34,9 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-semibold">Search</h1>
-      <StoreSearch />
+      <Suspense fallback={<Skeleton className="h-10 w-full max-w-md" />}>
+        <StoreSearch />
+      </Suspense>
       <ProductGrid products={results} />
     </div>
   );

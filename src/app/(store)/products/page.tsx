@@ -48,7 +48,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           <StoreSearch />
         </Suspense>
       </div>
-      <CategoryFilter categories={demoCategories} />
+      <Suspense fallback={<Skeleton className="h-8 w-40" />}>
+        <CategoryFilter categories={demoCategories} />
+      </Suspense>
       <ProductGrid products={filtered} />
     </div>
   );

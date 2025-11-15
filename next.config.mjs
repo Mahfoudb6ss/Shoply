@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactCompiler: true,
-  typedRoutes: true,
   experimental: {
     serverActions: {
       allowedOrigins: ["https://shoply.vercel.app", "http://localhost:3000"]

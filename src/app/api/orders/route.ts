@@ -5,7 +5,7 @@ import { getCurrentSession, requireRole } from "@/lib/auth";
 
 export const runtime = "edge";
 
-export async function GET(request: Request) {
+export async function GET(_: Request) {
   const session = await getCurrentSession();
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
