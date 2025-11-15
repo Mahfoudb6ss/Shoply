@@ -88,7 +88,7 @@ export const ProductManager = ({ products, categories }: ProductManagerProps) =>
       }
 
       toast.success("Product created");
-      setForm(prev => ({ ...emptyForm, categoryId: categories[0]?.id ?? "" }));
+      setForm({ ...emptyForm, categoryId: categories[0]?.id ?? "" });
       setImages([]);
       setOpen(false);
       router.refresh();
