@@ -9,8 +9,12 @@ import {
   signOut
 } from "@/lib/auth";
 import { verifyRefreshToken, setAuthCookies } from "@/lib/jwt";
+import { z } from "zod";
 
 export const runtime = "edge";
+
+const formatZodError = (error: z.ZodError) =>
+  error.issues.map(issue => issue.message).join(", ") || "Invalid payload";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -19,7 +23,7 @@ export async function POST(request: Request) {
 
   if (!parsed.success) {
     return NextResponse.json(
-      { error: parsed.error.flatten() },
+      { error: formatZodError(parsed.error) },
       { status: 400 }
     );
   }
