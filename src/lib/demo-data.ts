@@ -60,3 +60,63 @@ export const demoOrders: Order[] = [
   }
 ];
 
+export const demoCustomers = [
+  {
+    id: "u1",
+    email: "john.doe@example.com",
+    name: "John Doe",
+    phone: "+1 234 567 8900",
+    address: "123 Main St, New York, NY 10001",
+    createdAt: new Date("2024-01-15").toISOString(),
+    totalOrders: 5,
+    totalSpent: 645,
+    lastOrderDate: new Date("2024-12-01").toISOString(),
+    orders: [
+      {
+        id: "o1",
+        totalPrice: 129,
+        status: "processing",
+        createdAt: new Date("2024-12-01").toISOString(),
+        items: 1
+      },
+      {
+        id: "o2",
+        totalPrice: 258,
+        status: "completed",
+        createdAt: new Date("2024-11-15").toISOString(),
+        items: 2
+      }
+    ]
+  },
+  {
+    id: "u2",
+    email: "jane.smith@example.com",
+    name: "Jane Smith",
+    phone: "+1 234 567 8901",
+    address: "456 Oak Ave, Los Angeles, CA 90001",
+    createdAt: new Date("2024-02-20").toISOString(),
+    totalOrders: 12,
+    totalSpent: 1548,
+    lastOrderDate: new Date("2024-12-10").toISOString(),
+    orders: [
+      {
+        id: "o3",
+        totalPrice: 189,
+        status: "shipped",
+        createdAt: new Date("2024-12-10").toISOString(),
+        items: 3
+      }
+    ]
+  },
+  {
+    id: "u3",
+    email: "mike.wilson@example.com",
+    name: "Mike Wilson",
+    createdAt: new Date("2024-03-10").toISOString(),
+    totalOrders: 0,
+    totalSpent: 0,
+    lastOrderDate: undefined,
+    orders: []
+  }
+];
+
