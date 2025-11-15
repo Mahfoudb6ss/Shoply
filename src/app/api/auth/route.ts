@@ -16,6 +16,14 @@ export const runtime = "edge";
 const formatZodError = (error: z.ZodError) =>
   error.issues.map(issue => issue.message).join(", ") || "Invalid payload";
 
+export function OPTIONS() {
+  return new NextResponse(null, { status: 204 });
+}
+
+export function HEAD() {
+  return new NextResponse(null, { status: 200 });
+}
+
 export async function POST(request: Request) {
   const body = await request.json();
   const action = body.action as "login" | "register";
