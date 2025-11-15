@@ -5,13 +5,13 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/utils/cn";
 
 const adminNav = [
-  { title: "Overview", href: "/(admin)/dashboard" },
-  { title: "Products", href: "/(admin)/products" },
-  { title: "Orders", href: "/(admin)/orders" },
-  { title: "Customers", href: "/(admin)/customers" },
-  { title: "Categories", href: "/(admin)/categories" },
-  { title: "Analytics", href: "/(admin)/analytics" },
-  { title: "Users", href: "/(admin)/users" }
+  { title: "Overview", href: "/admin/dashboard" },
+  { title: "Products", href: "/admin/products" },
+  { title: "Orders", href: "/admin/orders" },
+  { title: "Customers", href: "/admin/customers" },
+  { title: "Categories", href: "/admin/categories" },
+  { title: "Analytics", href: "/admin/analytics" },
+  { title: "Users", href: "/admin/users" }
 ];
 
 export const AdminShell = ({ children }: { children: React.ReactNode }) => {
