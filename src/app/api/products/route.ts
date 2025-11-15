@@ -44,10 +44,25 @@ export async function POST(request: Request) {
   const body = await request.json();
   const parsed = productSchema.safeParse(body);
   if (!parsed.success) {
+    console.error("Validation error:", parsed.error.flatten());
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
 
+  // Check if category exists
   const client = supabaseService();
+  if (parsed.data.categoryId) {
+    const { data: category, error: categoryError } = await client
+      .from("categories")
+      .select("id")
+      .eq("id", parsed.data.categoryId)
+      .single();
+    
+    if (categoryError || !category) {
+      console.error("Category not found:", parsed.data.categoryId);
+      return NextResponse.json({ error: "Category not found" }, { status: 400 });
+    }
+  }
+
   const { data, error } = await client
     .from("products")
     .insert({
@@ -63,6 +78,7 @@ export async function POST(request: Request) {
     .single();
 
   if (error) {
+    console.error("Database error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
