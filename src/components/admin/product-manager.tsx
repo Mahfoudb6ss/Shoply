@@ -127,22 +127,27 @@ export const ProductManager = ({ products, categories }: ProductManagerProps) =>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="category">Category</Label>
-                  <Select
-                    value={form.categoryId}
-                    onValueChange={value => setForm(prev => ({ ...prev, categoryId: value }))}
-                    disabled={!categories.length}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.map(category => (
-                        <SelectItem key={category.id} value={category.id}>
-                          {category.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  {categories.length > 0 ? (
+                    <Select
+                      value={form.categoryId}
+                      onValueChange={value => setForm(prev => ({ ...prev, categoryId: value }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {categories.map(category => (
+                          <SelectItem key={category.id} value={category.id}>
+                            {category.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  ) : (
+                    <div className="text-sm text-muted-foreground p-2 border rounded">
+                      No categories available - product will be created without category
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="space-y-2">

@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
 
-  // Check if category exists
+  // Check if category exists (only if categoryId is provided)
   const client = supabaseService();
   if (parsed.data.categoryId) {
     const { data: category, error: categoryError } = await client
@@ -71,7 +71,7 @@ export async function POST(request: Request) {
       price: parsed.data.price,
       discount: parsed.data.discount,
       stock: parsed.data.stock,
-      category_id: parsed.data.categoryId,
+      category_id: parsed.data.categoryId || null,
       images: parsed.data.images
     })
     .select("*")

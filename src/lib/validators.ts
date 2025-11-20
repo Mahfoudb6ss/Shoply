@@ -13,7 +13,7 @@ export const productSchema = z.object({
   price: z.number().positive(),
   discount: z.number().min(0).max(0.9).optional().nullish(),
   stock: z.number().int().nonnegative(),
-  categoryId: z.string().uuid(),
+  categoryId: z.string().uuid().optional(),
   images: z.array(z.string().url()).default([]),
   featured: z.boolean().optional()
 });
